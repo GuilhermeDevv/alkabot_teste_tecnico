@@ -18,7 +18,7 @@ export function CardStatus({ status, msg }: { status: boolean, msg: string }) {
 
     return (
         <Container>
-            <Content
+            <Content 
                 borderColor={msg === "SUCESSO" ? "green" : "red"}
                 visible={visibleClass}
             >
