@@ -2,8 +2,7 @@ import styled, { css } from "styled-components";
 
 interface props {
     borderColor: string;
-    visible: boolean
-    colorSVG: string
+    visible: boolean;
 }
 
 
@@ -25,7 +24,7 @@ export const Content = styled.div<props>`
   position: relative;
   transition: transform 0.5s linear;
   ${({ visible }) =>
-    visible ? "transform: translateX(10px)" : "transform: translateX(-120%)"};
+        visible ? "transform: translateX(10px)" : "transform: translateX(-120%)"};
 
   & div {
     & svg,
