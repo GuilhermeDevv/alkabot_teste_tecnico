@@ -47,7 +47,7 @@ export function RegisterCompoments() {
 
     function createUser(data: FormData) {
         axios
-            .post("http://localhost:3000/user/register", {
+            .post("https://alkabot.onrender.com/user/register", {
                 name: data.name,
                 password: data.password,
                 email: data.email,

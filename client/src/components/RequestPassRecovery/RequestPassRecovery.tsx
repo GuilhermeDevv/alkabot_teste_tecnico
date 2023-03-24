@@ -29,7 +29,7 @@ export function RequestPassRecovery() {
         resolver: yupResolver(schema),
     });
     function recovery({ email }: FormData) {
-        axios.post("http://localhost:3000/user/requestPasswordRecovery", { email }).then(() => { navigate("/") }).catch(err => { console.log(err) })
+        axios.post("https://alkabot.onrender.com/user/requestPasswordRecovery", { email }).then(() => { navigate("/") }).catch(err => { console.log(err) })
     }
     return (
         <Container>
