@@ -139,7 +139,7 @@ class UserController {
             template_params: {
                 destinatario: user.email,
                 name: user.name,
-                message: `Aqui está o link para você recuperar sua conta, ele tem prazo de 1 HORA. https://alkabot.onrender.com/recovery/${token}`,
+                message: `Aqui está o link para você recuperar sua conta, ele tem prazo de 1 HORA. https://alkabot.vercel.app/recovery/${token}`,
             }
         };
         console.log(token)
