@@ -62,7 +62,6 @@ class UserController {
     async update(req: Request, res: Response) {
         const data: Partial<UserInterface> = req.body;
         const { hash } = req.params;
-
         if (!data) {
             return res.status(400).json({ message: "empty data" });
         }
@@ -86,6 +85,14 @@ class UserController {
             }
 
             const { email } = user;
+
+            // criptografa a senha antes de atualizar os dados do usuário
+            if (data.password) {
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(data.password, salt);
+                data.password = hashedPassword;
+            }
+
             await UserRespository.update({ email }, data);
             user.resetPasswordToken = "";
             await user.save();
