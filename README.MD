@@ -28,8 +28,6 @@
 
 ### CLIENT 💻
 
-- @hookform/resolvers
-- @types/styled-components
 - axios
 - react
 - react-hook-form
