@@ -3,9 +3,9 @@
 - Este projeto foi desenvolvido como parte de um teste técnico para a Alkabot.
 
 ## Visualização 🔗
-## ONLINE
+### ONLINE
 - [ACESSE AQUI!](https://alkabot.vercel.app)
-## LOCAL
+### LOCAL
 - CLONE ESTE REPO
 - CD SERVER -> NPM INSTALL -> NPM RUN DEV
 - CD CLIENT -> NPM INSTALL -> NPM RUN SERVER
