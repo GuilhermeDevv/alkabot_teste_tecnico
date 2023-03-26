@@ -3,10 +3,13 @@
 - Este projeto foi desenvolvido como parte de um teste técnico para a Alkabot.
 
 ## Visualização 🔗
-
--[ACESSE AQUI!](https://alkabot.vercel.app)
-
-## Tecnologias utilizadas ⚙
+## ONLINE
+- [ACESSE AQUI!](https://alkabot.vercel.app)
+## LOCAL
+- CLONE ESTE REPO
+- CD SERVER -> NPM INSTALL -> NPM RUN DEV
+- CD CLIENT -> NPM INSTALL -> NPM RUN SERVER
+ ## Tecnologias utilizadas ⚙
 
 ### SERVER 💻
 
