@@ -4,7 +4,7 @@
 
 ## Visualização 🔗
 
-- (LINK EM BREVE)
+-[ACESSE AQUI!](https://alkabot.vercel.app)
 
 ## Tecnologias utilizadas ⚙
 
