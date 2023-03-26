@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FiLock } from "react-icons/fi";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,7 @@ import {
     InputContent,
     InputSubmit,
 } from "./styles";
+import { CardStatus } from "../CardStatus/CardStatus";
 const schema = yup
     .object({
         password: yup.string().required("Digite a nova senha!"),
@@ -20,6 +21,8 @@ const schema = yup
     .required();
 type FormData = yup.InferType<typeof schema>;
 export function PasswordRecovery() {
+    const [statusMsg, setStatus] = useState(false);
+    const [msg, setMsg] = useState("SUCESSO");
     const {
         register,
         handleSubmit,
@@ -37,13 +40,33 @@ export function PasswordRecovery() {
 
             })
     }, [])
+
     function recovery({ password }: FormData) {
         console.log(password)
-        axios.put(`https://alkabot.onrender.com/user/recovery/${hash}`, { password }).then((data) => { console.log(data) }).catch(err => { console.log(err) })
+        axios.put(`https://alkabot.onrender.com/user/recovery/${hash}`, { password }).then((data) => {
+            setStatus(true)
+            setMsg("SUCESSO")
+            setTimeout(() => {
+                setStatus(false);
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
+            }, 2000);
+        })
+
+            .catch((err) => {
+                setStatus(true);
+                setMsg("ERRO");
+                setTimeout(() => {
+                    setStatus(false);
+                }, 2000);
+            });
     }
+
     return (
         <Container>
             <Content>
+                <CardStatus status={statusMsg} msg={msg} />
                 <Form onSubmit={handleSubmit(recovery)}>
                     <h1>Digite sua senha!</h1>
                     <div>
