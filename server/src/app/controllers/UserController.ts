@@ -97,10 +97,10 @@ class UserController {
     async delete(req: Request, res: Response) { }
 
     async verifyToken(req: Request, res: Response) {
-        console.log(req.params.hash + "testeaqui")
+
         if (req.params.hash) {
             const user = await userModel.findOne({ resetPasswordToken: req.params.hash });
-            console.log(user)
+
             if (!user) {
                 return res.status(400).json({
                     message: "The recovery URL provided is invalid.",
@@ -142,7 +142,7 @@ class UserController {
                 message: `Aqui está o link para você recuperar sua conta, ele tem prazo de 1 HORA. https://alkabot.vercel.app/recovery/${token}`,
             }
         };
-        console.log(token)
+
 
         axios.post('https://api.emailjs.com/api/v1.0/email/send', data).then(() => {
             return res.status(200).json({ message: "E-mail enviado", success: true })
