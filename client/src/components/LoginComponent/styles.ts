@@ -114,6 +114,9 @@ height: 50px;
     background-color: ${({ theme }) => theme.colors.backgroundButtonSecondary};
     font-size: 18px;
     text-transform: uppercase;
+    &:hover{
+        scale:1.05;
+    }
 
 
 `;
