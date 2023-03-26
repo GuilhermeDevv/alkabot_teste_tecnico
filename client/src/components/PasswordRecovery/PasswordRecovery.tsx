@@ -31,7 +31,7 @@ export function PasswordRecovery() {
     const { hash } = useParams();
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`http://localhost:3000/user/recovery/${hash}`).then(() => { })
+        axios.get(`https://alkabot.onrender.com/user/recovery/${hash}`).then(() => { })
             .catch((err) => {
                 navigate("/")
 
@@ -39,7 +39,7 @@ export function PasswordRecovery() {
     }, [])
     function recovery({ password }: FormData) {
         console.log(password)
-        axios.put(`http://localhost:3000/user/recovery/${hash}`, { password }).then((data) => { console.log(data) }).catch(err => { console.log(err) })
+        axios.put(`https://alkabot.onrender.com/user/recovery/${hash}`, { password }).then((data) => { console.log(data) }).catch(err => { console.log(err) })
     }
     return (
         <Container>
