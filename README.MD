@@ -40,6 +40,12 @@
 - typescript
 - vite
 
+### DIFICULDADES 
+
+- DEPLOY SERVER(precisei de ajuda)
+- SABE QUAL BANCO USAR (PRECISEI LER MONGODB E MYSQL -"escolhi mongo pela familiariadade")
+- FAZER "MUITO" EM POUCO TEMPO -"QUIS FAZER ALEM DO PEDIDO."
+
 # OBRIGADO 🔥!
 
 - Agradeço a Alkabot pela oportunidade de realizar este teste técnico. Se você quiser saber mais sobre mim e meu trabalho, por favor, visite meu [LINKEDIN](https://www.linkedin.com/in/guidev-onn/)
