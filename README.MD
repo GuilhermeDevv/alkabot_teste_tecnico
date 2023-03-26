@@ -8,7 +8,7 @@
 ### LOCAL
 - CLONE ESTE REPO
 - CD SERVER -> NPM INSTALL -> NPM RUN SERVER
-- CD CLIENT -> NPM INSTALL -> NPM RUN DV
+- CD CLIENT -> NPM INSTALL -> NPM RUN DEV
  ## Tecnologias utilizadas ⚙
 
 ### SERVER 💻
