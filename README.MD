@@ -43,7 +43,7 @@
 ### DIFICULDADES 
 
 - DEPLOY SERVER(precisei de ajuda)
-- SABE QUAL BANCO USAR (PRECISEI LER MONGODB E MYSQL -"escolhi mongo pela familiariadade")
+- SABE QUAL BANCO USAR (PRECISEI LER AS DOCUMENTACOES DE MONGODB E MYSQL -"escolhi mongo pela familiariadade")
 - FAZER "MUITO" EM POUCO TEMPO -"QUIS FAZER ALEM DO PEDIDO."
 
 # OBRIGADO 🔥!
