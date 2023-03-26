@@ -7,8 +7,8 @@
 - [ACESSE AQUI!](https://alkabot.vercel.app)
 ### LOCAL
 - CLONE ESTE REPO
-- CD SERVER -> NPM INSTALL -> NPM RUN DEV
-- CD CLIENT -> NPM INSTALL -> NPM RUN SERVER
+- CD SERVER -> NPM INSTALL -> NPM RUN SERVER
+- CD CLIENT -> NPM INSTALL -> NPM RUN DV
  ## Tecnologias utilizadas ⚙
 
 ### SERVER 💻
