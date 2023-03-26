@@ -75,7 +75,7 @@ export const ConfigUser = styled.div`
     text-transform: capitalize;
     font-weight: bold;
 }
-@media(max-width:428px){display:none;}
+@media(max-width:428px){& span{display:none;}}
 `
 export const UserInfo = styled.div`
 display:flex;
