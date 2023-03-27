@@ -42,7 +42,7 @@ export function LoginComponent() {
 
     const onSubmit = (data: FormData) => {
         axios
-            .post("https://alkabot.onrender.com/user/login", {
+            .post("https://alkabotapi.vercel.app/user/login", {
                 email: data.email,
                 password: data.password,
             })
