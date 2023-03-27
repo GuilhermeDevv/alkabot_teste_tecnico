@@ -5,12 +5,12 @@ import cors from "cors";
 import connect from "./app/database/DB";
 dotenv.config();
 connect();
-const server = express();
-server.use(cors());
-server.use(express.json());
-server.use(express.urlencoded({ extended: true }));
-server.use("/user", routes);
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/user", routes);
 const port = process.env.PORT ? process.env.PORT : 3000;
-server.listen(port, () => {
+app.listen(port, () => {
     console.log(`🔥 server rodando na porta ${port}`);
 });
