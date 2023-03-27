@@ -42,7 +42,7 @@ export const Form = styled.form`
         text-align:center;
         justify-content: center;
         align-items:center;
-& span{ 
+& span{
     font-size:12px;
     color:red;
 }}
@@ -98,9 +98,14 @@ export const InputContent = styled.div`
     }
 `;
 export const InputSubmit = styled(Input)`
+height: 50px;
     margin-top: 4px;
     background-color: ${({ theme }) => theme.colors.backgroundButtonSecondary};
     font-size: 18px;
     text-transform: uppercase;
-    &:hover{scale:1.03}
+    &:hover{
+        scale:1.05;
+    }
+
+
 `;
