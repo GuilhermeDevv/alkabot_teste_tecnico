@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import React, { useEffect } from "react";
 import { FiLock } from "react-icons/fi";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -13,14 +13,19 @@ import {
     InputContent,
     InputSubmit,
 } from "./styles";
+import { CardStatus } from "../CardStatus/CardStatus";
 const schema = yup
     .object({
         email: yup.string().required("Digite seu E-mail"),
     })
     .required();
 type FormData = yup.InferType<typeof schema>;
+
 export function RequestPassRecovery() {
     const navigate = useNavigate()
+    const [statusMsg, setStatus] = useState(false);
+    const [msg, setMsg] = useState("SUCESSO");
+    const [activitCard, setActivitCard] = useState(false);
     const {
         register,
         handleSubmit,
@@ -29,11 +34,31 @@ export function RequestPassRecovery() {
         resolver: yupResolver(schema),
     });
     function recovery({ email }: FormData) {
-        axios.post("https://alkabot.onrender.com/user/requestPasswordRecovery", { email }).then(() => { navigate("/") }).catch(err => { console.log(err) })
+        axios.post("https://alkabot.onrender.com/user/requestPasswordRecovery", { email }).then((data) => {
+            setStatus(true)
+            setMsg("SUCESSO")
+            setActivitCard(true);
+            setTimeout(() => {
+                setActivitCard(false);
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
+            }, 2500);
+        })
+
+            .catch((err) => {
+                setActivitCard(true)
+                setStatus(false);
+                setMsg(err.response.data.message);
+                setTimeout(() => {
+                    setActivitCard(false);
+                }, 3000);
+            });
     }
     return (
         <Container>
             <Content>
+                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
                 <Form onSubmit={handleSubmit(recovery)}>
                     <h1>Recuperar acesso</h1>
                     <div>
