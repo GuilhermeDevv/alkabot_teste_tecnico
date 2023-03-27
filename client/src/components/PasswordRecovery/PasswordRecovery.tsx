@@ -23,6 +23,7 @@ type FormData = yup.InferType<typeof schema>;
 export function PasswordRecovery() {
     const [statusMsg, setStatus] = useState(false);
     const [msg, setMsg] = useState("SUCESSO");
+    const [activitCard, setActivitCard] = useState(false);
     const {
         register,
         handleSubmit,
@@ -46,27 +47,28 @@ export function PasswordRecovery() {
         axios.put(`https://alkabot.onrender.com/user/recovery/${hash}`, { password }).then((data) => {
             setStatus(true)
             setMsg("SUCESSO")
+            setActivitCard(true);
             setTimeout(() => {
-                setStatus(false);
+                setActivitCard(false);
                 setTimeout(() => {
                     navigate("/");
                 }, 1000);
-            }, 2000);
+            }, 2500);
         })
-
             .catch((err) => {
-                setStatus(true);
-                setMsg("ERRO");
+                setActivitCard(true)
+                setStatus(false);
+                setMsg(err.response.data.message);
                 setTimeout(() => {
-                    setStatus(false);
-                }, 2000);
+                    setActivitCard(false);
+                },3000);
             });
     }
 
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} />
+                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
                 <Form onSubmit={handleSubmit(recovery)}>
                     <h1>Digite sua senha!</h1>
                     <div>
