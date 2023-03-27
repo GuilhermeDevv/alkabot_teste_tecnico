@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FiLock } from "react-icons/fi";
 import { AiOutlineMail } from "react-icons/ai";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,6 +16,7 @@ import {
     InputContent,
     InputSubmit,
 } from "./styles";
+import { CardStatus } from "../CardStatus/CardStatus";
 
 const schema = yup.object({
     email: yup.string().required("Digite seu E-mail"),
@@ -27,6 +28,8 @@ type FormData = yup.InferType<typeof schema>;
 export function LoginComponent() {
     const { setUserData, setAuthorized } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [statusMsg, setStatus] = useState(false);
+    const [msg, setMsg] = useState("SUCESSO");
 
     const {
         register,
@@ -48,14 +51,19 @@ export function LoginComponent() {
                 setUserData({ email, name });
                 navigate("/feed");
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                setStatus(true);
+                setMsg("ERRO");
+                setTimeout(() => {
+                    setStatus(false);
+                }, 2000);
             });
     };
 
     return (
         <Container>
             <Content>
+                <CardStatus status={statusMsg} msg={msg} />
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Acesse sua conta!</h1>
                     <div>
