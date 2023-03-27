@@ -36,7 +36,7 @@ export function RequestPassRecovery() {
     function recovery({ email }: FormData) {
         axios.post("https://alkabot.onrender.com/user/requestPasswordRecovery", { email }).then((data) => {
             setStatus(true)
-            setMsg("SUCESSO")
+            setMsg("SUCESSO OLHE SEU E-MAIL!")
             setActivitCard(true);
             setTimeout(() => {
                 setActivitCard(false);
