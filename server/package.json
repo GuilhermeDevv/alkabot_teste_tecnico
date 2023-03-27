@@ -11,7 +11,7 @@
         "server": "nodemon ./src/server.ts",
         "start": "ts-node ./src/server.ts",
         "startTwo": "node dist/src/server.js",
-        "build": "tsc"
+        "build": "npm install"
     },
     "keywords": [],
     "author": "",
