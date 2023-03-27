@@ -1,20 +1,5 @@
 {
     "version": 2,
-    "builds": [
-        { "src": "package.json", "use": "@vercel/node" },
-        { "src": "src/**", "use": "build", "config": { "distDir": "dist" } }
-    ],
-    "routes": [{ "src": "/.*", "dest": "/index.html" }],
-    "functions": {
-        "default": {
-            "handler": "dist/server.js",
-            "memory": 512
-        }
-    },
-    "build": {
-        "env": {
-            "NODE_ENV": "production"
-        },
-        "command": "npm run build"
-    }
+    "builds": [{ "src": "src/**/*.ts", "use": "@vercel/node" }],
+    "routes": [{ "src": "/.*", "dest": "/src/server.ts" }]
 }
