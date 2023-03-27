@@ -48,7 +48,7 @@ export function RegisterCompoments() {
 
     function createUser(data: FormData) {
         axios
-            .post("https://alkabot.onrender.com/user/register", {
+            .post("https://alkabotapi.vercel.app/user/register", {
                 name: data.name,
                 password: data.password,
                 email: data.email,

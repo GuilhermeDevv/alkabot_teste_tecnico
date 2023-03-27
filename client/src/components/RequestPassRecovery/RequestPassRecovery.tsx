@@ -34,7 +34,7 @@ export function RequestPassRecovery() {
         resolver: yupResolver(schema),
     });
     function recovery({ email }: FormData) {
-        axios.post("https://alkabot.onrender.com/user/requestPasswordRecovery", { email }).then((data) => {
+        axios.post("https://alkabotapi.vercel.app/user/requestPasswordRecovery", { email }).then((data) => {
             setStatus(true)
             setMsg("SUCESSO OLHE SEU E-MAIL!")
             setActivitCard(true);

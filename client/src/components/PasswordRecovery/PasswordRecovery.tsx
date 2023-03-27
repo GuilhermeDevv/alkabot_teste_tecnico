@@ -35,7 +35,7 @@ export function PasswordRecovery() {
     const { hash } = useParams();
     const navigate = useNavigate()
     useEffect(() => {
-        axios.get(`https://alkabot.onrender.com/user/recovery/${hash}`).then(() => { })
+        axios.get(`https://alkabotapi.vercel.app/user/recovery/${hash}`).then(() => { })
             .catch((err) => {
                 navigate("/")
 
@@ -44,7 +44,7 @@ export function PasswordRecovery() {
 
     function recovery({ password }: FormData) {
         console.log(password)
-        axios.put(`https://alkabot.onrender.com/user/recovery/${hash}`, { password }).then((data) => {
+        axios.put(`https://alkabotapi.vercel.app/user/recovery/${hash}`, { password }).then((data) => {
             setStatus(true)
             setMsg("SUCESSO")
             setActivitCard(true);
