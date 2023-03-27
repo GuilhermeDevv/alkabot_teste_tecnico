@@ -2,37 +2,37 @@ import React, { useState, useEffect } from "react";
 import { Container, Content } from "./styles";
 import { AiFillLike, AiFillDislike } from "react-icons/ai";
 
-export function CardStatus({ status, msg }: { status: boolean, msg: string }) {
+export function CardStatus({ status, msg, activitCard }: { status: boolean, msg: string, activitCard: boolean }) {
     const [visibleClass, setVisibleClass] = useState(false);
 
     useEffect(() => {
-        if (status === true) {
+        if (activitCard) {
             setVisibleClass(true);
             setTimeout(() => {
-                setVisibleClass(true);
-            }, 1000); // 5 segundos em milissegundos
+                setVisibleClass(false);
+            }, 3500); // 5 segundos em milissegundos
         } else {
             setVisibleClass(false);
         }
-    }, [status]);
+    }, [activitCard]);
 
     return (
         <Container>
-            <Content 
-                borderColor={msg === "SUCESSO" ? "green" : "red"}
+            <Content
+                borderColor={status ? "green" : "red"}
                 visible={visibleClass}
             >
                 <div>
-                    <span>{msg} !</span>
-                    {msg === "SUCESSO" ? (
+                    <span>{status  ? "Sucesso!":"Erro"}!</span>
+                    {status ? (
                         <>
                             <AiFillLike />
-                            <span>Seja bem-vindo!</span>
+                            <span>{msg}</span>
                         </>
                     ) : (<>
                         <AiFillDislike />
-                        <span>E-mail em uso!</span>
-                        </>
+                        <span>{msg}</span>
+                    </>
                     )}
                 </div>
             </Content>
