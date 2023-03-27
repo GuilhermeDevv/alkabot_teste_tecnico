@@ -83,7 +83,7 @@ export function FeedComponent() {
                         <ConfigUser>
                             <Link to="/account">
                                 <IoMdPerson size={25} />
-                                Olá, {name}🔽
+                                <span> Olá, {name}🔽</span>
                             </Link>
                         </ConfigUser>
                     </UserInfo>
