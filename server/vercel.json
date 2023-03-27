@@ -1,15 +1,20 @@
 {
-    "name": "deploy-node-in-vercel",
     "version": 2,
-    "public": true,
-    "build": {
-        "src": "src/server.js",
-        "use": "@vercel/node"
-    },
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "src/server.js"
+    "builds": [
+        { "src": "package.json", "use": "@vercel/node" },
+        { "src": "src/**", "use": "build", "config": { "distDir": "dist" } }
+    ],
+    "routes": [{ "src": "/.*", "dest": "/index.html" }],
+    "functions": {
+        "default": {
+            "handler": "dist/server.js",
+            "memory": 512
         }
-    ]
+    },
+    "build": {
+        "env": {
+            "NODE_ENV": "production"
+        },
+        "command": "npm run build"
+    }
 }
