@@ -30,6 +30,7 @@ export function LoginComponent() {
     const navigate = useNavigate();
     const [statusMsg, setStatus] = useState(false);
     const [msg, setMsg] = useState("SUCESSO");
+    const [activitCard, setActivitCard] = useState(false);
 
     const {
         register,
@@ -52,18 +53,19 @@ export function LoginComponent() {
                 navigate("/feed");
             })
             .catch((err) => {
-                setStatus(true);
-                setMsg("ERRO");
+                setActivitCard(true)
+                setStatus(false);
+                setMsg(err.response.data.message);
                 setTimeout(() => {
-                    setStatus(false);
-                }, 2000);
+                    setActivitCard(false);
+                }, 3000);
             });
     };
 
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} />
+                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Acesse sua conta!</h1>
                     <div>

@@ -44,6 +44,7 @@ export function RegisterCompoments() {
     const navigate = useNavigate();
     const [statusMsg, setStatus] = useState(false);
     const [msg, setMsg] = useState("SUCESSO");
+    const [activitCard, setActivitCard] = useState(false);
 
     function createUser(data: FormData) {
         axios
@@ -55,26 +56,28 @@ export function RegisterCompoments() {
             .then((data) => {
                 setStatus(true)
                 setMsg("SUCESSO")
+                setActivitCard(true);
                 setTimeout(() => {
-                    setStatus(false);
+                    setActivitCard(false);
                     setTimeout(() => {
                         navigate("/");
                     }, 1000);
-                }, 2000);
+                }, 2500);
             })
 
             .catch((err) => {
-                setStatus(true);
-                setMsg("ERRO");
+                setActivitCard(true)
+                setStatus(false);
+                setMsg(err.response.data.message);
                 setTimeout(() => {
-                    setStatus(false);
-                }, 2000);
+                    setActivitCard(false);
+                }, 3000);
             });
     }
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} />
+                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
                 <Form onSubmit={handleSubmit(createUser)}>
                     <h1>Seja bem-vindo!</h1>
                     <div>
