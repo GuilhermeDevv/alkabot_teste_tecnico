@@ -38,6 +38,7 @@ export const Content = styled.div<props>`
       font-size: 16px;
       font-weight: bold;
       color:black;
+      text-transform: uppercase;
     }
     display: flex;
     flex-direction: column;
