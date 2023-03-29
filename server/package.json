@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./src/server.ts",
-    "start": "node server.js",
+    "start": "ts-node server.ts",
     "build": "npm install && tsc"
   },
   "keywords": [],
