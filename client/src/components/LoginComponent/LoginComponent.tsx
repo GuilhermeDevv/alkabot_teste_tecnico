@@ -29,7 +29,7 @@ export function LoginComponent() {
     const { setUserData, setAuthorized } = useContext(AuthContext);
     const navigate = useNavigate();
     const [statusMsg, setStatus] = useState(false);
-    const [msg, setMsg] = useState("SUCESSO");
+    const [msg, setMsg] = useState("erro no servidor");
     const [activitCard, setActivitCard] = useState(false);
 
     const {
