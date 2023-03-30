@@ -2,15 +2,15 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/server.js",
+  "main": "",
   "engines": {
     "node": "18.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./src/server.ts",
-    "start": "node server.js",
-    "build": "npm install && tsc"
+    "start": "node ./dist/server.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
