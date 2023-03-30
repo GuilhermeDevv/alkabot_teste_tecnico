@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import moment from 'moment';
 
 import UserRepository from '../../repositories/UserRepository';
-import IUserInterface from '../../types/user';
+import { IUserInterface } from '../../types/user';
 
 class UpdateUserServices {
   async execute(data: IUserInterface, hash: string) {
