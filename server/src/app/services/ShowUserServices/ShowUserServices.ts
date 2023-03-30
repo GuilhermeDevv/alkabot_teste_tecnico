@@ -17,7 +17,7 @@ class ShowUserServices {
         message: 'empty data',
       };
     }
-    const user = await UserRepository.find(email);
+    const user = await UserRepository.find({ email });
     if (user) {
       const passwordMatch = await bcrypt.compare(password, user.password);
       if (passwordMatch) {
