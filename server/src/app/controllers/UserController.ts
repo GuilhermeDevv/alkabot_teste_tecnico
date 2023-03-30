@@ -10,7 +10,7 @@ class UserController {
   async show(req: Request, res: Response) {
     const data = req.body;
     const { status, message } = await ShowUserServices.execute(data);
-    res.status(status).json(message);
+    return res.status(status).json(message);
   }
   async store(req: Request, res: Response) {
     const data = req.body;
@@ -31,7 +31,7 @@ class UserController {
   async verifyToken(req: Request, res: Response) {
     const { hash } = req.params;
     const { status, message } = await VerifyTokenUserServer.execute(hash);
-    res.status(status).json({ message });
+    return res.status(status).json({ message });
   }
 }
 
