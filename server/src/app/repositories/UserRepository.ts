@@ -1,6 +1,6 @@
-import IUserRepository from '../interface/InterfaceUserRepository';
 import UserModel from '../models/userModel';
-import IUser from '../types/user';
+
+import { IUserInterface as IUser, IUserRepository } from '../types/user';
 
 class UserRepository implements IUserRepository {
   async find(data: Partial<IUser>) {
