@@ -18,7 +18,6 @@ import {
     InputSubmit,
 } from "./styles";
 
-
 const schema = yup
     .object({
         name: yup.string().required("Digite seu nome"),
@@ -54,8 +53,8 @@ export function RegisterCompoments() {
                 email: data.email,
             })
             .then((data) => {
-                setStatus(true)
-                setMsg("SUCESSO")
+                setStatus(true);
+                setMsg("SUCESSO");
                 setActivitCard(true);
                 setTimeout(() => {
                     setActivitCard(false);
@@ -66,9 +65,9 @@ export function RegisterCompoments() {
             })
 
             .catch((err) => {
-                setActivitCard(true)
+                setActivitCard(true);
                 setStatus(false);
-                setMsg(err.response.data.message);
+                setMsg(err.response.data);
                 setTimeout(() => {
                     setActivitCard(false);
                 }, 3000);
@@ -77,7 +76,11 @@ export function RegisterCompoments() {
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
+                <CardStatus
+                    status={statusMsg}
+                    msg={msg}
+                    activitCard={activitCard}
+                />
                 <Form onSubmit={handleSubmit(createUser)}>
                     <h1>Seja bem-vindo!</h1>
                     <div>
@@ -133,7 +136,8 @@ export function RegisterCompoments() {
                     </div>
                     <AboutAcess>
                         <h6>
-                            Esqueceu a <Link to="/requestPasswordRecovery">senha</Link> ?
+                            Esqueceu a{" "}
+                            <Link to="/requestPasswordRecovery">senha</Link> ?
                         </h6>
                         <Link to="/">Tenho acesso</Link>
                     </AboutAcess>
