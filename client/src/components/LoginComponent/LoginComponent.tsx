@@ -53,9 +53,10 @@ export function LoginComponent() {
                 navigate("/feed");
             })
             .catch((err) => {
-                setActivitCard(true)
+                setActivitCard(true);
+                console.log(err);
                 setStatus(false);
-                setMsg(err.response.data.message);
+                setMsg(err.response.data);
                 setTimeout(() => {
                     setActivitCard(false);
                 }, 3000);
@@ -65,7 +66,11 @@ export function LoginComponent() {
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
+                <CardStatus
+                    status={statusMsg}
+                    msg={msg}
+                    activitCard={activitCard}
+                />
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Acesse sua conta!</h1>
                     <div>

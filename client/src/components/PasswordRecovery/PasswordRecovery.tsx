@@ -33,47 +33,59 @@ export function PasswordRecovery() {
     });
     //redirect para home caso nao tenha hash na rota e se caso hash nao exista faz tambem
     const { hash } = useParams();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     useEffect(() => {
-        axios.get(`https://alkabotapi.vercel.app/user/recovery/${hash}`).then(() => { })
+        axios
+            .get(`https://alkabotapi.vercel.app/user/recovery/${hash}`)
             .catch((err) => {
-                navigate("/")
-
-            })
-    }, [])
+                navigate("/");
+            });
+    }, []);
 
     function recovery({ password }: FormData) {
-        console.log(password)
-        axios.put(`https://alkabotapi.vercel.app/user/recovery/${hash}`, { password }).then((data) => {
-            setStatus(true)
-            setMsg("SUCESSO")
-            setActivitCard(true);
-            setTimeout(() => {
-                setActivitCard(false);
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            }, 2500);
-        })
-            .catch((err) => {
-                setActivitCard(true)
-                setStatus(false);
-                setMsg(err.response.data.message);
+        console.log(password);
+        axios
+            .put(`https://alkabotapi.vercel.app/user/recovery/${hash}`, {
+                password,
+            })
+            .then((data) => {
+                setStatus(true);
+                setMsg("SUCESSO");
+                setActivitCard(true);
                 setTimeout(() => {
                     setActivitCard(false);
-                },3000);
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 1000);
+                }, 2500);
+            })
+            .catch((err) => {
+                setActivitCard(true);
+                setStatus(false);
+                setMsg(err.response.data);
+                setTimeout(() => {
+                    setActivitCard(false);
+                }, 3000);
             });
     }
 
     return (
         <Container>
             <Content>
-                <CardStatus status={statusMsg} msg={msg} activitCard={activitCard} />
+                <CardStatus
+                    status={statusMsg}
+                    msg={msg}
+                    activitCard={activitCard}
+                />
                 <Form onSubmit={handleSubmit(recovery)}>
                     <h1>Digite sua senha!</h1>
                     <div>
                         <InputContent>
-                            <Input type="password" placeholder="Password" {...register("password")} />
+                            <Input
+                                type="password"
+                                placeholder="Password"
+                                {...register("password")}
+                            />
                             <FiLock size={20} />
                         </InputContent>
                         <span></span>
