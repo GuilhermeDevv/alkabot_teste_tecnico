@@ -14,9 +14,9 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType>({
     userData: { name: "", email: "" },
-    setUserData: () => { },
+    setUserData: () => {},
     authorized: false,
-    setAuthorized: () => { },
+    setAuthorized: () => {},
 });
 
 export function ProvideUser({ children }: { children: ReactNode }) {
