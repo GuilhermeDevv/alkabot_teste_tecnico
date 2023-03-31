@@ -62,7 +62,7 @@ export function PasswordRecovery() {
             .catch((err) => {
                 setActivitCard(true);
                 setStatus(false);
-                setMsg(err.response.data);
+                setMsg(err.response.data.message);
                 setTimeout(() => {
                     setActivitCard(false);
                 }, 3000);
