@@ -1,11 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from "axios"
-import { Action, ConfigUser, Container, Content, Div, FeedTitle, FooterPost, Header, InputContent, NameUser, Post, PostUser, PostUserContainer, Title, UserInfo } from './styles';
-import { IoMdPerson, IoMdSearch } from "react-icons/io"
-import { Comments } from './components/Comments/Comments';
-import { PostComponent } from './components/Post/PostComponent';
-import { AuthContext } from '../../contexts/userContext';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import {
+    Action,
+    ConfigUser,
+    Container,
+    Content,
+    Div,
+    FeedTitle,
+    FooterPost,
+    Header,
+    InputContent,
+    NameUser,
+    Post,
+    PostUser,
+    PostUserContainer,
+    Title,
+    UserInfo,
+} from "./styles";
+import { IoMdPerson, IoMdSearch } from "react-icons/io";
+import { Comments } from "./components/Comments/Comments";
+import { PostComponent } from "./components/Post/PostComponent";
+import { AuthContext } from "../../contexts/userContext";
+import { Link, useNavigate } from "react-router-dom";
 
 interface PostInterface {
     userId: number;
@@ -27,7 +43,7 @@ interface UserInterface {
         geo: {
             lat: string;
             lng: string;
-        }
+        };
     };
     allPosts?: PostInterface[];
 }
@@ -35,7 +51,7 @@ interface UserInterface {
 export function FeedComponent() {
     const [users, setUsers] = useState<Array<UserInterface>>([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -49,7 +65,9 @@ export function FeedComponent() {
             const postsData: PostInterface[] = await postsResponse.json();
 
             const usersWithPosts = usersData.map((user) => {
-                const userPosts = postsData.filter((post) => post.userId === user.id);
+                const userPosts = postsData.filter(
+                    (post) => post.userId === user.id
+                );
                 return { ...user, allPosts: userPosts };
             });
 
@@ -58,7 +76,7 @@ export function FeedComponent() {
         fetchData();
     }, []);
 
-    const filteredUsers = users.filter(user =>
+    const filteredUsers = users.filter((user) =>
         user.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -66,17 +84,23 @@ export function FeedComponent() {
 
     useEffect(() => {
         if (!authorized) {
-            navigate("/")
+            navigate("/");
         }
-    }, [])
+    }, []);
 
     return (
         <Container>
             <Content>
                 <Header>
-                    <Title>ALKA<span>BOT</span></Title>
+                    <Title>
+                        ALKA<span>BOT</span>
+                    </Title>
                     <InputContent>
-                        <input type='text' placeholder='Qual usuario...' onChange={(e) => setSearchTerm(e.target.value)} />
+                        <input
+                            type="text"
+                            placeholder="Qual usuario..."
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                         <IoMdSearch size={25} />
                     </InputContent>
                     <UserInfo>
@@ -92,13 +116,19 @@ export function FeedComponent() {
                     <FeedTitle>Feed</FeedTitle>
                     {filteredUsers.map(({ allPosts, name, id }) => {
                         return (
-                            allPosts && allPosts.map((post) => (
-                                <PostComponent key={post.id} body={post.body} name={name} idUser={id} />
+                            allPosts &&
+                            allPosts.map((post) => (
+                                <PostComponent
+                                    key={post.id}
+                                    body={post.body}
+                                    name={name}
+                                    idUser={id}
+                                />
                             ))
                         );
                     })}
                 </Div>
             </Content>
-        </Container >
+        </Container>
     );
 }

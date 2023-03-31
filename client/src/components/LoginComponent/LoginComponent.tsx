@@ -47,16 +47,13 @@ export function LoginComponent() {
                 password: data.password,
             })
             .then((response) => {
-                const { email, name } = response.data;
+                const { email, name } = response.data.message;
                 setAuthorized(true);
                 setUserData({ email, name });
-                console.log("err");
                 navigate("/feed");
             })
             .catch((err) => {
-                console.log("err");
                 setActivitCard(true);
-                console.log(err);
                 setStatus(false);
                 setMsg(err.response.data.message);
                 setTimeout(() => {
