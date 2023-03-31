@@ -50,13 +50,15 @@ export function LoginComponent() {
                 const { email, name } = response.data;
                 setAuthorized(true);
                 setUserData({ email, name });
+                console.log("err");
                 navigate("/feed");
             })
             .catch((err) => {
+                console.log("err");
                 setActivitCard(true);
                 console.log(err);
                 setStatus(false);
-                setMsg(err.response.data);
+                setMsg(err.response.data.message);
                 setTimeout(() => {
                     setActivitCard(false);
                 }, 3000);
