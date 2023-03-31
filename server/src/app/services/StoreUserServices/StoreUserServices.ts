@@ -16,7 +16,7 @@ class StoreUserServices {
         message: 'empty data',
       };
     }
-    const isUser = await UserRepository.find(email);
+    const isUser = await UserRepository.find({email});
     if (isUser) {
       return {
         status: 400,
